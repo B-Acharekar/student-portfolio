@@ -9,7 +9,7 @@ dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 3000;
-
+const PUBLIC_IP = process.env.PUBLIC_IP || "localhost";
 // Configure S3 client
 const s3 = new S3Client({
   region: process.env.AWS_REGION,
@@ -82,5 +82,5 @@ app.use(express.json());
 app.use(express.static(path.join(process.cwd(), "src")));
 
 app.listen(PORT, () => {
-  console.log(`Server running at http://${process.env.PUBLIC_IP}:${PORT}`);
+  console.log(`Server running at http://${PUBLIC_IP}:${PORT}`);
 });
